@@ -1,0 +1,25 @@
+{
+  "name": "qm-hub-gpio-set-value",
+  "version": "1.0.0",
+  "description": "method for assigning values ​​to the gpios",
+  "main": "setValue.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/modulesQuimera/qm-hub-gpio-set-value.git"
+  },
+  "keywords": ["quimera", "hub", "JIG"],
+  "author": "HUB-LSE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/modulesQuimera/qm-hub-gpio-set-value/issues"
+  },
+  "homepage": "https://github.com/modulesQuimera/qm-hub-gpio-set-value#readme",
+  "node-red": {
+		"nodes": {
+			"setValue": "setValue.js"
+		}
+	}
+}

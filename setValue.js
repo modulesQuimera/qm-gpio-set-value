@@ -84,7 +84,7 @@ module.exports = function(RED) {
     // nome do modulo
     RED.nodes.registerType("setValue", setValueNode);
 
-    RED.httpAdmin.get("/getValue",function(req,res) {
+    RED.httpAdmin.get("/setValue",function(req,res) {
         console.log(mapeamentoNode)
         if(mapeamentoNode){
             res.json([

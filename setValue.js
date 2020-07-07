@@ -22,18 +22,20 @@ module.exports = function(RED) {
                 var command = {
                     type: "GPIO_modular_V1.0",
                     slot: 1,
-                    method: "get_value",
+                    method: "set_value",
                     GPIO_number: parseInt(node.gpio_number),
                     GPIO_value: node.val === "true" ? true : false
                 }
                 // if(exportMode){
+                    var slot = globalContext.get("slot");
+
                     var file = globalContext.get("exportFile")
-                   
-                    if(currentMode == "test"){file.jig_test.push(command)}
-                    else{file.jig_error.push(command)}
+                    if(currentMode == "test"){file.slots[slot].jig_test.push(command)}
+                    else{file.slots[slot].jig_error.push(command)}
                     globalContext.set("exportFile", file);
-                    node.status({fill:"green", shape:"dot", text:"done"}); // seta o status pra waiting
                     send(msg)
+                    console.log(command)
+
                 // }
                 // else{
                 //     node.status({fill:"yellow", shape:"dot", text:"waiting"}); // seta o status pra waiting

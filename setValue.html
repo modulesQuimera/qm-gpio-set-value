@@ -1,7 +1,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('setValue',{
         category: 'GPIO Module',
-        color: '#6666ff',
+        color: '#98FB98',
         defaults: {
             name:{
                 value: ""
@@ -20,9 +20,9 @@
         },
         inputs:1,
         outputs:1,
-        icon: "font-awesome/fa-bars",
-        label: function() { return this.name || "setValue" },
-        paletteLabel: "setValue",
+        icon: "./icons/Set_Value.svg",
+        label: function() { return this.name || "Set Value" },
+        paletteLabel: "Set Value",
 
         oneditprepare: function() {
             var ports = []
@@ -42,6 +42,13 @@
                 });
             })
             $("#node-input-mapeamento").val($("#node-input-mapeamento option:first").val());
+        },
+        oneditresize: function() {
+            if(!$("#red-ui-header-button-deploy").hasClass("disabled")){
+                $("#node-dialog-ok").click()
+                $("#red-ui-header-button-deploy").click()
+                $("#red-ui-deploy-dialog-confirm-deploy-deploy").click()
+            }
         },
         oneditsave: function() {
             var mytype = $("#node-config-input-port").typedInput('type');
@@ -67,23 +74,56 @@
     top: 0px;
     }
 
+  
     label{
-        width: 25% !important;
+        width: 50% !important;
+        margin-bottom: 2px !important;
+    }
+
+    .columm{
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    hr {
+    width: 40% !important;
+    float: left !important;
+    }
+
+    .hr-div-set{
+        display: flex !important;
+        justify-content: space-between !important;
+        margin-top: 250px !important;
+    }
+
+    .optional{
+        height: max-content !important;
+        margin-top: 10px !important;
+    }
+
+    .descript{
+        text-align: center;
     }
 </style>
 
 
 <script type="text/html" data-template-name="setValue">
-    <div class="form-row">
+    <!-- <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
+    </div> -->
+
+    <div class="form-row columm">
+        <strong class="descript">
+        Set Value is used to assign the value of a specific GPIO port.
+    </strong>
     </div>
 
 
-    <div class="form-row">
+    <div class="form-row columm">
         <label for="node-input-gpio_number" ><i class="fa fa-microchip"></i> GPIO number</label>
-        <input type="text" id="node-config-input-port" style="width: 22%">
-        <div style="width:20px; margin-left:215px; margin-top:-34px" selected>
+        <input type="text" id="node-config-input-port" style="width: 45%">
+        <div style="width:20px; margin-left: 204px; margin-top:-34px" selected>
             <input type="text" id="node-input-mapeamento" placeholder="mapeamento">
         </div>
 <!-- 
@@ -94,13 +134,24 @@
         </select> -->
     </div>
 
-    <div class="form-row">
+    <div class="form-row columm" style="margin-top: 20px !important;">
         <label for="node-input-gpio_number" ><i class="fa fa-microchip"></i> GPIO value</label>
         <!-- <span for="node-input-val"><i class="fa fa-sign-out" aria-hidden="true"></i> Valor do GPIO</span> -->
         <select id="node-input-val" style="width:18%; margin-left:0px">
             <option value="true">True</option>
             <option value="false">False</option>
         </select>
+    </div>
+
+    <div class="hr-div-set">
+        <hr>
+        <span class="optional">Optional</span>
+        <hr>
+    </div>
+
+    <div class="form-row columm">
+        <label style="width: 50% !important;" for="node-input-name" ><i class="fa fa-tag"></i> Component Nickname</label>
+        <input type="text" id="node-input-name" placeholder="Name">
     </div>
 
 

@@ -1,6 +1,6 @@
 {
   "name": "qm-hub-gpio-set-value",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "method for assigning values ​​to the gpios",
   "main": "setValue.js",
   "scripts": {

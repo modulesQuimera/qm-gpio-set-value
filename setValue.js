@@ -40,7 +40,6 @@ module.exports = function(RED) {
         mapeamentoNode = RED.nodes.getNode(this.mapeamento);
 
         node.on('input', function(msg, send, done) {
-            console.log(this)
             var globalContext = node.context().global;
             var exportMode = globalContext.get("exportMode");
             var currentMode = globalContext.get("currentMode");
@@ -121,14 +120,12 @@ module.exports = function(RED) {
             }
             globalContext.set("exportFile", file);
             send(msg)
-            console.log(command)
         });
     }
 
     RED.nodes.registerType("setValue", setValueNode);
 
     // RED.httpAdmin.get("/setValue",function(req,res) {
-    //     console.log(mapeamentoNode)
     //     if(mapeamentoNode){
     //         res.json([
     //             {value:mapeamentoNode.valuePort1, label: "GPA0_CN - " + mapeamentoNode.labelPort1, hasValue:false},
